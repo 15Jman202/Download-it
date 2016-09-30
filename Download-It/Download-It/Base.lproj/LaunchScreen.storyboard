@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="ugw-rJ-wwr"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Text" translatesAutoresizingMaskIntoConstraints="NO" id="5L8-VF-Pj5"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.00093152857152745128" green="0.77437430620193481" blue="0.75205355882644653" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5L8-VF-Pj5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="197-Ag-lbZ"/>
+                            <constraint firstItem="ugw-rJ-wwr" firstAttribute="centerX" secondItem="5L8-VF-Pj5" secondAttribute="centerX" id="BdU-2F-EzC"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ugw-rJ-wwr" secondAttribute="bottom" constant="222" id="UrP-Ds-3Y9"/>
+                            <constraint firstItem="5L8-VF-Pj5" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="237" id="VCX-52-rhL"/>
+                            <constraint firstItem="ugw-rJ-wwr" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="89" id="b3W-dM-74c"/>
+                            <constraint firstItem="5L8-VF-Pj5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="21" id="hYy-PO-X0s"/>
+                            <constraint firstItem="ugw-rJ-wwr" firstAttribute="top" secondItem="5L8-VF-Pj5" secondAttribute="bottom" constant="8" id="oGE-zC-0ju"/>
+                            <constraint firstItem="5L8-VF-Pj5" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-49" id="p5Z-yW-vex"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon" width="180" height="180"/>
+        <image name="Text" width="834" height="128"/>
+    </resources>
+</document>
