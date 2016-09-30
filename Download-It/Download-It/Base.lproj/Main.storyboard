@@ -45,7 +45,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XYe-B1-PGb">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-hc-NvJ">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -82,15 +82,9 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="red-PG-xdm">
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Average Download" translatesAutoresizingMaskIntoConstraints="NO" id="eoy-ul-INQ"/>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8f-71-JXN">
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Average">
-                                                        <attributes>
-                                                            <font key="NSFont" size="17" name="Krungthep"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8f-71-JXN">
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -98,15 +92,9 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="R1R-BO-Xeh">
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Maximum Download" translatesAutoresizingMaskIntoConstraints="NO" id="et2-Eb-WjN"/>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYT-fl-2Pf">
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Max">
-                                                        <attributes>
-                                                            <font key="NSFont" size="17" name="Krungthep"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYT-fl-2Pf">
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -114,15 +102,9 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9eQ-L8-AwZ">
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Minimum Download" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-xM-TvU"/>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-eb-DdG">
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Min">
-                                                        <attributes>
-                                                            <font key="NSFont" size="17" name="Krungthep"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-eb-DdG">
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -131,6 +113,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.00093152857150000004" green="0.77437430620000003" blue="0.75205355880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XYe-B1-PGb" firstAttribute="leading" secondItem="zYW-gb-kGx" secondAttribute="leadingMargin" id="0Zi-tJ-kPq"/>
                             <constraint firstItem="Y9a-ZF-wCe" firstAttribute="trailing" secondItem="Roh-gJ-ByZ" secondAttribute="trailing" id="1A5-xi-jLi"/>
@@ -160,6 +143,9 @@
                             <constraint firstItem="PjC-2i-cx3" firstAttribute="trailing" secondItem="nYB-AZ-e4z" secondAttribute="trailing" id="zXg-zx-NEa"/>
                             <constraint firstItem="z4s-9U-BVG" firstAttribute="trailing" secondItem="Y9a-ZF-wCe" secondAttribute="trailing" id="zxY-r2-IyB"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="b7H-Js-Snf" appends="YES" id="vWi-Ec-xcF"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="dvq-if-D99"/>
                     <connections>
@@ -173,6 +159,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzD-SR-jTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="b7H-Js-Snf">
+                    <connections>
+                        <action selector="screenTapped:" destination="6a0-qB-puL" id="Rcr-v1-2by"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-391.19999999999999" y="-126.38680659670166"/>
         </scene>
@@ -263,6 +254,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.00093152857150000004" green="0.77437430620000003" blue="0.75205355880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Lwh-Tq-KbJ" firstAttribute="bottom" secondItem="D7J-td-Pta" secondAttribute="top" id="0jU-V2-4zH"/>
                             <constraint firstItem="qHY-SY-bTS" firstAttribute="leading" secondItem="0WY-Y7-wUH" secondAttribute="leading" id="3GU-uo-pLL"/>
@@ -301,6 +293,9 @@
                             <constraint firstItem="YEP-Tc-wVw" firstAttribute="leading" secondItem="BQH-gQ-huX" secondAttribute="leading" id="uzC-DG-k0M"/>
                             <constraint firstItem="f93-1c-blW" firstAttribute="top" secondItem="qHY-SY-bTS" secondAttribute="bottom" constant="9" id="wB1-JU-Vex"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zYt-wp-QI5" appends="YES" id="kkn-7s-gFz"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="8cD-bm-ael"/>
                     <connections>
@@ -311,6 +306,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9q-l1-QbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zYt-wp-QI5">
+                    <connections>
+                        <action selector="screenTapped:" destination="wc0-pi-R6n" id="FS3-Cd-sWE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="429.60000000000002" y="-126.38680659670166"/>
         </scene>

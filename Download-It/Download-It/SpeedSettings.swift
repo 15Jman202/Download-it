@@ -20,6 +20,13 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var wifiMinTextField: UITextField!
     @IBOutlet weak var ethernetMaxTextField: UITextField!
     @IBOutlet weak var ethernetMinTetField: UITextField!
+    
+    @IBAction func screenTapped(sender: UITapGestureRecognizer) {
+        wifiMaxTextField.resignFirstResponder()
+        wifiMinTextField.resignFirstResponder()
+        ethernetMinTetField.resignFirstResponder()
+        ethernetMaxTextField.resignFirstResponder()
+    }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -28,7 +35,12 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         
-        guard let wifiMax = wifiMaxTextField.text, let wifiMin = wifiMinTextField.text, let etherMax = wifiMaxTextField.text, etherMin = ethernetMinTetField.text where wifiMax != "" && wifiMin != "" && etherMax != "" && etherMax != "" else { presentingViewController?.dismissViewControllerAnimated(true, completion: nil);  return }
+        guard let wifiMax = wifiMaxTextField.text, let wifiMin = wifiMinTextField.text, let etherMax = wifiMaxTextField.text, etherMin = ethernetMinTetField.text else {
+            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            return
+        }
+        
+        guard wifiMax != "" && wifiMin != "" && etherMax != "" && etherMax != "" else { presentingViewController?.dismissViewControllerAnimated(true, completion: nil); return }
         
         settings = Settings(maxWifi: Double(wifiMax)!, minWifi: Double(wifiMin)!, minEther: Double(etherMin)!, maxEther: Double(etherMax)!)
         
@@ -38,7 +50,9 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
     }
     
     func loadFromPersistStore() {
-        guard let setting = NSUserDefaults.standardUserDefaults().objectForKey(kSettings) as? [String: Double] else { return }
+        guard let setting = NSUserDefaults.standardUserDefaults().objectForKey(kSettings) as? [String: Double] else {
+            return
+        }
         settings = Settings(dictionary: setting)
     }
     
