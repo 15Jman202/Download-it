@@ -299,9 +299,10 @@
 				DEVELOPMENT_TEAM = CWLLFTCWHP;
 				INFOPLIST_FILE = "Download-It/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinCarver.Download-It";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinCarver.DownloadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -315,9 +316,10 @@
 				DEVELOPMENT_TEAM = CWLLFTCWHP;
 				INFOPLIST_FILE = "Download-It/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinCarver.Download-It";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinCarver.DownloadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
