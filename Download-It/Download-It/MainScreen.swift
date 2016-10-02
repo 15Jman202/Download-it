@@ -46,7 +46,7 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         switch sender.value {
         case 0:
             file.sizeType = Size.KB
-            sizeLabel.text = "KB"
+            sizeLabel.text = "\(Size.KB)"
             updateTextFields()
         case 1:
             file.sizeType = Size.MB
@@ -219,3 +219,6 @@ class MainScreen: UIViewController, UITextFieldDelegate {
 //
 //    view.addConstraints([verticalStackViewTop, verticalStackViewBottom, verticalStackViewLeading, verticalStackViewTrailing])
 //}
+
+
+

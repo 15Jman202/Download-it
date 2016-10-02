@@ -33,6 +33,15 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func presentAverageZeroController() {
+        let alertController = UIAlertController(title: "Average download speeds must be above 0.0 Mbps", message: "Please reinput your download settings", preferredStyle: .Alert)
+        
+        let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        alertController.addAction(dismissAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         
         guard let wifiMax = wifiMaxTextField.text, let wifiMin = wifiMinTextField.text, let etherMax = wifiMaxTextField.text, etherMin = ethernetMinTetField.text else {
@@ -41,6 +50,8 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         }
         
         guard wifiMax != "" && wifiMin != "" && etherMax != "" && etherMax != "" else { presentingViewController?.dismissViewControllerAnimated(true, completion: nil); return }
+        
+        guard CalculatorController.sharedController.findAverageSpeed(Double(wifiMin)!, max: Double(wifiMax)!) > 0.0 && CalculatorController.sharedController.findAverageSpeed(Double(etherMin)!, max: Double(etherMax)!) > 0.0 else { presentAverageZeroController(); return }
         
         settings = Settings(maxWifi: Double(wifiMax)!, minWifi: Double(wifiMin)!, minEther: Double(etherMin)!, maxEther: Double(etherMax)!)
         
