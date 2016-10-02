@@ -12,6 +12,15 @@ class MainScreen: UIViewController, UITextFieldDelegate {
     
     var file = File()
     
+    @IBAction func sizeOfTextFieldDidChange() {
+        
+        guard let text = sizeOfFileTextField.text where text != "" else { return }
+        
+        file.size = Double(text)!
+        
+        updateTextFields()
+    }
+
     @IBAction func screenTapped(sender: UITapGestureRecognizer) {
         
         sizeOfFileTextField.resignFirstResponder()
@@ -99,35 +108,42 @@ class MainScreen: UIViewController, UITextFieldDelegate {
             let averageTime = CalculatorController.sharedController.findTimeFrom(averageSpeed, sizeOfFile: file.size, typeOfSize: file.sizeType)
             let maxTime = CalculatorController.sharedController.findTimeFrom(settings.maxWifi, sizeOfFile: file.size, typeOfSize: file.sizeType)
             let minTime = CalculatorController.sharedController.findTimeFrom(settings.minWifi, sizeOfFile: file.size, typeOfSize: file.sizeType)
+
+            let averageHours = averageTime.0
+            let averageMins = averageTime.1
+            let averageSecs = averageTime.2
             
-            let averagehours = averageTime.0
-            let averagemins = averageTime.1
-            let averagesecs = averageTime.2
+            let maxHours = maxTime.0
+            let maxMins = maxTime.1
+            let maxSecs = maxTime.2
             
-            if averagehours == 0 && averagemins == 0 && averagesecs == 0 {
-                averageLabel.text = "Time is to small to calculate"
-            } else {
-                averageLabel.text = "Hours: \(averagehours), Minutes: \(averagemins), Seconds: \(averagesecs)"
+            let minHours = minTime.0
+            let minMins = minTime.1
+            let minSecs = minTime.2
+            
+            if Double(averageHours) > 9999.0 || Double(maxHours) > 999.0 || Double(minHours) > 999.0 {
+                averageLabel.text = "Time is to long to calculate"
+                maxLabel.text = averageLabel.text
+                minLabel.text = averageLabel.text
+                return
             }
             
-            let maxhours = maxTime.0
-            let maxmins = maxTime.1
-            let maxsecs = maxTime.2
+            if averageHours == 0 && averageMins == 0 && averageSecs == 0 {
+                averageLabel.text = "Time is to short to calculate"
+            } else {
+                averageLabel.text = "Hours: \(averageHours), Minutes: \(averageMins), Seconds: \(averageSecs)"
+            }
             
-            if maxhours == 0 && maxmins == 0 && maxsecs == 0 {
+            if maxHours == 0 && maxMins == 0 && maxSecs == 0 {
                 minLabel.text = "Time is to small to calculate"
             } else {
-                minLabel.text = "Hours: \(maxhours), Minutes: \(maxmins), Seconds: \(maxsecs)"
+                minLabel.text = "Hours: \(maxHours), Minutes: \(maxMins), Seconds: \(maxSecs)"
             }
             
-            let minhours = minTime.0
-            let minmins = minTime.1
-            let minsecs = minTime.2
-            
-            if minhours == 0 && minmins == 0 && minsecs == 0 {
+            if minHours == 0 && minMins == 0 && minSecs == 0 {
                 maxLabel.text = "Time is to small to calculate"
             } else {
-                maxLabel.text = "Hours: \(minhours), Minutes: \(minmins), Seconds: \(minsecs)"
+                maxLabel.text = "Hours: \(minHours), Minutes: \(minMins), Seconds: \(minSecs)"
             }
             
         } else {
@@ -137,36 +153,42 @@ class MainScreen: UIViewController, UITextFieldDelegate {
             let maxTime = CalculatorController.sharedController.findTimeFrom(settings.maxEther, sizeOfFile: file.size, typeOfSize: file.sizeType)
             let minTime = CalculatorController.sharedController.findTimeFrom(settings.minEther, sizeOfFile: file.size, typeOfSize: file.sizeType)
             
-            let averagehours = averageTime.0
-            let averagemins = averageTime.1
-            let averagesecs = averageTime.2
+            let averageHours = averageTime.0
+            let averageMins = averageTime.1
+            let averageSecs = averageTime.2
             
-            if averagehours == 0 && averagemins == 0 && averagesecs == 0 {
-                averageLabel.text = "Time is to small to calculate"
-            } else {
-                averageLabel.text = "Hours: \(averagehours), Minutes: \(averagemins), Seconds: \(averagesecs)"
+            let maxHours = maxTime.0
+            let maxMins = maxTime.1
+            let maxSecs = maxTime.2
+            
+            let minHours = minTime.0
+            let minMins = minTime.1
+            let minSecs = minTime.2
+            
+            guard Double(averageHours) == Double.infinity && Double(averageMins) == Double.infinity && Double(averageSecs) == Double.infinity || Double(maxHours) == Double.infinity && Double(maxMins) == Double.infinity && Double(maxSecs) == Double.infinity || Double(minHours) == Double.infinity && Double(minMins) == Double.infinity && Double(minSecs) == Double.infinity else {
+                averageLabel.text = "Time is to long to calculate"
+                maxLabel.text = averageLabel.text
+                minLabel.text = averageLabel.text
+                return
             }
             
-            let maxhours = maxTime.0
-            let maxmins = maxTime.1
-            let maxsecs = maxTime.2
+            if averageHours == 0 && averageMins == 0 && averageSecs == 0 {
+                averageLabel.text = "Time is to short to calculate"
+            } else {
+                averageLabel.text = "Hours: \(averageHours), Minutes: \(averageMins), Seconds: \(averageSecs)"
+            }
             
-            if maxhours == 0 && maxmins == 0 && maxsecs == 0 {
+            if maxHours == 0 && maxMins == 0 && maxSecs == 0 {
                 minLabel.text = "Time is to small to calculate"
             } else {
-                minLabel.text = "Hours: \(maxhours), Minutes: \(maxmins), Seconds: \(maxsecs)"
+                minLabel.text = "Hours: \(maxHours), Minutes: \(maxMins), Seconds: \(maxSecs)"
             }
             
-            let minhours = minTime.0
-            let minmins = minTime.1
-            let minsecs = minTime.2
-            
-            if minhours == 0 && minmins == 0 && minsecs == 0 {
+            if minHours == 0 && minMins == 0 && minSecs == 0 {
                 maxLabel.text = "Time is to small to calculate"
             } else {
-                maxLabel.text = "Hours: \(minhours), Minutes: \(minmins), Seconds: \(minsecs)"
+                maxLabel.text = "Hours: \(minHours), Minutes: \(minMins), Seconds: \(minSecs)"
             }
-            
         }
     }
 }
