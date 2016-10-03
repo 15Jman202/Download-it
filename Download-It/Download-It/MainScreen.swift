@@ -121,27 +121,26 @@ class MainScreen: UIViewController, UITextFieldDelegate {
             let minMins = minTime.1
             let minSecs = minTime.2
             
-            if Double(averageHours) > 9999.0 || Double(maxHours) > 999.0 || Double(minHours) > 999.0 {
-                averageLabel.text = "Time is to long to calculate"
-                maxLabel.text = averageLabel.text
-                minLabel.text = averageLabel.text
-                return
-            }
-            
             if averageHours == 0 && averageMins == 0 && averageSecs == 0 {
                 averageLabel.text = "Time is to short to calculate"
+            } else if Double(averageHours) > 99999.0 {
+                averageLabel.text = "Time is to long to calculate"
             } else {
                 averageLabel.text = "Hours: \(averageHours), Minutes: \(averageMins), Seconds: \(averageSecs)"
             }
             
             if maxHours == 0 && maxMins == 0 && maxSecs == 0 {
                 minLabel.text = "Time is to small to calculate"
+            } else if Double(maxHours) > 99999.0 {
+                minLabel.text = "Time is to long to calculate"
             } else {
                 minLabel.text = "Hours: \(maxHours), Minutes: \(maxMins), Seconds: \(maxSecs)"
             }
             
             if minHours == 0 && minMins == 0 && minSecs == 0 {
                 maxLabel.text = "Time is to small to calculate"
+            } else if Double(minHours) > 99999.0 {
+                maxLabel.text = "Time is to long to calculate"
             } else {
                 maxLabel.text = "Hours: \(minHours), Minutes: \(minMins), Seconds: \(minSecs)"
             }
@@ -165,27 +164,26 @@ class MainScreen: UIViewController, UITextFieldDelegate {
             let minMins = minTime.1
             let minSecs = minTime.2
             
-            guard Double(averageHours) == Double.infinity && Double(averageMins) == Double.infinity && Double(averageSecs) == Double.infinity || Double(maxHours) == Double.infinity && Double(maxMins) == Double.infinity && Double(maxSecs) == Double.infinity || Double(minHours) == Double.infinity && Double(minMins) == Double.infinity && Double(minSecs) == Double.infinity else {
-                averageLabel.text = "Time is to long to calculate"
-                maxLabel.text = averageLabel.text
-                minLabel.text = averageLabel.text
-                return
-            }
-            
             if averageHours == 0 && averageMins == 0 && averageSecs == 0 {
                 averageLabel.text = "Time is to short to calculate"
+            } else if Double(averageHours) > 99999.0 {
+                averageLabel.text = "Time is to long to calculate"
             } else {
                 averageLabel.text = "Hours: \(averageHours), Minutes: \(averageMins), Seconds: \(averageSecs)"
             }
             
             if maxHours == 0 && maxMins == 0 && maxSecs == 0 {
                 minLabel.text = "Time is to small to calculate"
+            } else if Double(maxHours) > 99999.0 {
+                minLabel.text = "Time is to long to calculate"
             } else {
                 minLabel.text = "Hours: \(maxHours), Minutes: \(maxMins), Seconds: \(maxSecs)"
             }
             
             if minHours == 0 && minMins == 0 && minSecs == 0 {
                 maxLabel.text = "Time is to small to calculate"
+            } else if Double(minHours) > 99999.0 {
+                maxLabel.text = "Time is to long to calculate"
             } else {
                 maxLabel.text = "Hours: \(minHours), Minutes: \(minMins), Seconds: \(minSecs)"
             }

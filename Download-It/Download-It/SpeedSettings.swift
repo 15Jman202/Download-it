@@ -27,11 +27,6 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         ethernetMinTetField.resignFirstResponder()
         ethernetMaxTextField.resignFirstResponder()
     }
-
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     
     func presentAverageZeroController() {
         let alertController = UIAlertController(title: "Average download speeds must be above 0.0 Mbps", message: "Please reinput your download settings", preferredStyle: .Alert)
@@ -76,7 +71,40 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         loadFromPersistStore()
+    }
+    
+    @IBAction func minWifiEditingEnded() {
+        if let settings = settings where wifiMinTextField.text != ""{
+            let minWifi = Double(wifiMinTextField.text ?? "")!
+            settings.minWifi = minWifi
+            NSUserDefaults.standardUserDefaults().setObject(settings.dictionaryRep, forKey: kSettings)
+        }
+    }
+    
+    @IBAction func maxWifiEditingEnded() {
+        if let settings = settings where wifiMaxTextField.text != ""{
+            let maxWifi = Double(wifiMaxTextField.text ?? "")!
+            settings.maxWifi = maxWifi
+            NSUserDefaults.standardUserDefaults().setObject(settings.dictionaryRep, forKey: kSettings)
+        }
+    }
+    
+    @IBAction func minEthernetEditingEnded() {
+        if let settings = settings where ethernetMinTetField.text != "" {
+            let minEthernet = Double(ethernetMinTetField.text ?? "")!
+            settings.minEther = minEthernet
+            NSUserDefaults.standardUserDefaults().setObject(settings.dictionaryRep, forKey: kSettings)
+        }
+    }
+    
+    @IBAction func maxEthernetEditingEnded() {
+        if let settings = settings where ethernetMaxTextField.text != "" {
+            let etherMax = Double(ethernetMaxTextField.text ?? "")!
+            settings.maxEther = etherMax
+            NSUserDefaults.standardUserDefaults().setObject(settings.dictionaryRep, forKey: kSettings)
+        }
     }
     
     override func viewDidLoad() {
