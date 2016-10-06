@@ -67,7 +67,7 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         wifiMaxTextField.placeholder = "\(setting.maxWifi)"
         wifiMinTextField.placeholder = "\(setting.minWifi)"
         ethernetMinTetField.placeholder = "\(setting.minEther)"
-        ethernetMaxTextField.placeholder = "\(setting.maxWifi)"
+        ethernetMaxTextField.placeholder = "\(setting.maxEther)"
     }
     
     override func viewWillAppear(animated: Bool) {

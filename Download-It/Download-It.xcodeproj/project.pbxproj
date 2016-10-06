@@ -56,6 +56,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D05EC08A1DA6C55100B6E894 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0DF44CA1D9C990F002C67B7 /* MainScreen.swift */,
+				D0DF44CC1D9C9921002C67B7 /* SpeedSettings.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D05EC08B1DA6C56100B6E894 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0A27E531D9B233200EB7718 /* AppDelegate.swift */,
+				D0A27E481D9B22FB00EB7718 /* Assets.xcassets */,
+				D0A27E4A1D9B22FB00EB7718 /* LaunchScreen.storyboard */,
+				D0A27E4D1D9B22FB00EB7718 /* Info.plist */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		D05EC08C1DA6C56E00B6E894 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0DF44F01D9DC20B002C67B7 /* Settings.swift */,
+				D0DF44EC1D9D8DE3002C67B7 /* File.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D05EC08D1DA6C57700B6E894 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D01304C61D9C5B0B0003D44C /* CalculatorController.swift */,
+			);
+			name = "Model Controller";
+			sourceTree = "<group>";
+		};
 		D0A27E351D9B22FB00EB7718 = {
 			isa = PBXGroup;
 			children = (
@@ -75,16 +112,11 @@
 		D0A27E401D9B22FB00EB7718 /* Download-It */ = {
 			isa = PBXGroup;
 			children = (
-				D0A27E531D9B233200EB7718 /* AppDelegate.swift */,
 				D0A27E451D9B22FB00EB7718 /* Main.storyboard */,
-				D0DF44CA1D9C990F002C67B7 /* MainScreen.swift */,
-				D01304C61D9C5B0B0003D44C /* CalculatorController.swift */,
-				D0DF44CC1D9C9921002C67B7 /* SpeedSettings.swift */,
-				D0DF44F01D9DC20B002C67B7 /* Settings.swift */,
-				D0DF44EC1D9D8DE3002C67B7 /* File.swift */,
-				D0A27E481D9B22FB00EB7718 /* Assets.xcassets */,
-				D0A27E4A1D9B22FB00EB7718 /* LaunchScreen.storyboard */,
-				D0A27E4D1D9B22FB00EB7718 /* Info.plist */,
+				D05EC08C1DA6C56E00B6E894 /* Models */,
+				D05EC08D1DA6C57700B6E894 /* Model Controller */,
+				D05EC08A1DA6C55100B6E894 /* View Controllers */,
+				D05EC08B1DA6C56100B6E894 /* Support Files */,
 			);
 			path = "Download-It";
 			sourceTree = "<group>";
