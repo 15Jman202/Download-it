@@ -267,6 +267,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-by-E4B">
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Don't know my ethernet speed">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0017752185231074691" green="0.46264594793319702" blue="0.99926763772964478" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="22" name="ArialRoundedMTBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="dontCareAboutEther" destination="wc0-pi-R6n" eventType="touchUpInside" id="4YL-Kz-xOo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.00093152857150000004" green="0.77437430620000003" blue="0.75205355880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -276,6 +292,7 @@
                             <constraint firstItem="YEP-Tc-wVw" firstAttribute="trailing" secondItem="BQH-gQ-huX" secondAttribute="trailing" id="4oC-OM-PNI"/>
                             <constraint firstItem="BQH-gQ-huX" firstAttribute="trailing" secondItem="f93-1c-blW" secondAttribute="trailing" id="5bv-Q4-ILj"/>
                             <constraint firstItem="f93-1c-blW" firstAttribute="leading" secondItem="Lwh-Tq-KbJ" secondAttribute="leading" id="7Eo-jQ-qW0"/>
+                            <constraint firstItem="oF9-by-E4B" firstAttribute="centerX" secondItem="Yuz-fy-F6y" secondAttribute="centerX" id="7kd-QV-FPo"/>
                             <constraint firstItem="TdM-we-GkM" firstAttribute="trailing" secondItem="qHY-SY-bTS" secondAttribute="trailing" id="7p6-b1-hes"/>
                             <constraint firstItem="BQH-gQ-huX" firstAttribute="top" secondItem="YEP-Tc-wVw" secondAttribute="bottom" constant="50" id="9LX-Y6-W3u"/>
                             <constraint firstItem="lVr-3g-ufa" firstAttribute="bottom" secondItem="YEP-Tc-wVw" secondAttribute="bottom" id="CPs-gY-yTv"/>
@@ -306,6 +323,7 @@
                             <constraint firstItem="ajl-xH-las" firstAttribute="leading" secondItem="cg8-J2-pe4" secondAttribute="leading" id="qBU-zl-ZXx"/>
                             <constraint firstItem="lVr-3g-ufa" firstAttribute="leading" secondItem="Taf-fI-w6F" secondAttribute="leading" id="uOD-zK-Lo5"/>
                             <constraint firstItem="YEP-Tc-wVw" firstAttribute="leading" secondItem="BQH-gQ-huX" secondAttribute="leading" id="uzC-DG-k0M"/>
+                            <constraint firstItem="oF9-by-E4B" firstAttribute="top" secondItem="Yuz-fy-F6y" secondAttribute="bottom" constant="16" id="vwD-Ra-WQC"/>
                             <constraint firstItem="f93-1c-blW" firstAttribute="top" secondItem="qHY-SY-bTS" secondAttribute="bottom" constant="9" id="wB1-JU-Vex"/>
                         </constraints>
                         <connections>

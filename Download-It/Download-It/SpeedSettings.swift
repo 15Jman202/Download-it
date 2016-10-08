@@ -39,14 +39,22 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         
-        guard let wifiMax = wifiMaxTextField.text, let wifiMin = wifiMinTextField.text, let etherMax = wifiMaxTextField.text, etherMin = ethernetMinTetField.text else {
+        guard let wifiMax = wifiMaxTextField.text, let wifiMin = wifiMinTextField.text, let etherMax = wifiMaxTextField.text, let etherMin = ethernetMinTetField.text else {
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             return
         }
         
         // Need to add view controller here
         
-        guard wifiMax != "" && wifiMin != "" && etherMax != "" && etherMin != "" else { presentingViewController?.dismissViewControllerAnimated(true, completion: nil); return }
+        guard wifiMax != "" && wifiMin != "" && etherMax != "" && etherMin != "" else {
+            if settings == nil {
+                presentUnsavedSettings()
+            } else {
+                presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                return
+            }
+            return
+        }
         
         guard CalculatorController.sharedController.findAverageSpeed(Double(wifiMin)!, max: Double(wifiMax)!) > 0.0 && CalculatorController.sharedController.findAverageSpeed(Double(etherMin)!, max: Double(etherMax)!) > 0.0 else { presentAverageZeroController(); return }
         
@@ -55,6 +63,21 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         NSUserDefaults.standardUserDefaults().setObject(settings?.dictionaryRep, forKey: kSettings)
     
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func presentUnsavedSettings() {
+        let alertController = UIAlertController(title: "If you leave now your savings will be deleted", message: "Are you sure you would like to leave this page?", preferredStyle: .Alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+        
+        alertController.addAction(yesAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func loadFromPersistStore() {
@@ -75,6 +98,12 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadFromPersistStore()
+    }
+    @IBAction func dontCareAboutEther() {
+        ethernetMinTetField.text = "0.0"
+        ethernetMaxTextField.text = "0.1"
+        minEthernetEditingEnded()
+        maxEthernetEditingEnded()
     }
     
     @IBAction func minWifiEditingEnded() {
