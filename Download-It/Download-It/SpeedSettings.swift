@@ -44,7 +44,9 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard wifiMax != "" && wifiMin != "" && etherMax != "" && etherMax != "" else { presentingViewController?.dismissViewControllerAnimated(true, completion: nil); return }
+        // Need to add view controller here
+        
+        guard wifiMax != "" && wifiMin != "" && etherMax != "" && etherMin != "" else { presentingViewController?.dismissViewControllerAnimated(true, completion: nil); return }
         
         guard CalculatorController.sharedController.findAverageSpeed(Double(wifiMin)!, max: Double(wifiMax)!) > 0.0 && CalculatorController.sharedController.findAverageSpeed(Double(etherMin)!, max: Double(etherMax)!) > 0.0 else { presentAverageZeroController(); return }
         
