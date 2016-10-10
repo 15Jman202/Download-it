@@ -44,8 +44,6 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
             return
         }
         
-        // Need to add view controller here
-        
         guard wifiMax != "" && wifiMin != "" && etherMax != "" && etherMin != "" else {
             if settings == nil {
                 presentUnsavedSettings()
@@ -99,6 +97,7 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         loadFromPersistStore()
     }
+    
     @IBAction func dontCareAboutEther() {
         ethernetMinTetField.text = "0.0"
         ethernetMaxTextField.text = "0.1"

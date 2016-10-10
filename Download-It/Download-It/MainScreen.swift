@@ -16,6 +16,8 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         
         guard let text = sizeOfFileTextField.text where text != "" else { return }
         
+        guard text.characters.first != "." else { return }
+        
         file.size = Double(text)!
         
         updateTextFields()
