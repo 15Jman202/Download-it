@@ -10,16 +10,40 @@ import UIKit
 
 class SpeedSettings: UIViewController, UITextFieldDelegate {
     
-    static let sharedContoller = SpeedSettings()
+    // MARK: - Keys
     
     private let kSettings = "Settings"
     
+    // MARK: - Accessable functions
+    
+    static let sharedContoller = SpeedSettings()
     var settings: Settings?
+    
+    // MARK: - View
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadFromPersistStore()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        wifiMaxTextField.delegate = self
+        wifiMinTextField.delegate = self
+        ethernetMinTetField.delegate = self
+        ethernetMaxTextField.delegate = self
+        loadFromPersistStore()
+        setupTextField()
+    }
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var wifiMaxTextField: UITextField!
     @IBOutlet weak var wifiMinTextField: UITextField!
     @IBOutlet weak var ethernetMaxTextField: UITextField!
     @IBOutlet weak var ethernetMinTetField: UITextField!
+    
+    // MARK: - Actions
     
     @IBAction func screenTapped(sender: UITapGestureRecognizer) {
         wifiMaxTextField.resignFirstResponder()
@@ -28,18 +52,9 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         ethernetMaxTextField.resignFirstResponder()
     }
     
-    func presentAverageZeroController() {
-        let alertController = UIAlertController(title: "Average download speeds must be above 0.0 Mbps", message: "Please reinput your download settings", preferredStyle: .Alert)
-        
-        let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-        alertController.addAction(dismissAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         
-        guard let wifiMax = wifiMaxTextField.text, let wifiMin = wifiMinTextField.text, let etherMax = wifiMaxTextField.text, let etherMin = ethernetMinTetField.text else {
+        guard let wifiMax = wifiMaxTextField.text, let wifiMin = wifiMinTextField.text, let etherMax = ethernetMaxTextField.text, let etherMin = ethernetMinTetField.text else {
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             return
         }
@@ -63,6 +78,15 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func dontCareAboutEther() {
+        ethernetMinTetField.text = "0.0"
+        ethernetMaxTextField.text = "0.1"
+        minEthernetEditingEnded()
+        maxEthernetEditingEnded()
+    }
+    
+    // MARK: - Alert Controllers
+    
     func presentUnsavedSettings() {
         let alertController = UIAlertController(title: "If you leave now your savings will be deleted", message: "Are you sure you would like to leave this page?", preferredStyle: .Alert)
         
@@ -77,6 +101,29 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    func presentAverageZeroController() {
+        let alertController = UIAlertController(title: "Average download speeds must be above 0.0 Mbps", message: "Please reinput your download settings", preferredStyle: .Alert)
+        
+        let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        alertController.addAction(dismissAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if string == "\n" || string == "\t" {
+            return false
+        }
+        
+        let nonValue = NSCharacterSet(charactersInString: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\"\"`~<>\\/?';:{}[]|=+-_()*&^%$#@!,")
+        
+        return (string.rangeOfCharacterFromSet(nonValue) == nil)
+    }
+
+    
+    // MARK: - Setup Functions
     
     func loadFromPersistStore() {
         guard let setting = NSUserDefaults.standardUserDefaults().objectForKey(kSettings) as? [String: Double] else {
@@ -93,17 +140,7 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
         ethernetMaxTextField.placeholder = "\(setting.maxEther)"
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        loadFromPersistStore()
-    }
-    
-    @IBAction func dontCareAboutEther() {
-        ethernetMinTetField.text = "0.0"
-        ethernetMaxTextField.text = "0.1"
-        minEthernetEditingEnded()
-        maxEthernetEditingEnded()
-    }
+    // MARK: - End Editing Fucntions
     
     @IBAction func minWifiEditingEnded() {
         if let settings = settings where wifiMinTextField.text != ""{
@@ -135,11 +172,5 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
             settings.maxEther = etherMax
             NSUserDefaults.standardUserDefaults().setObject(settings.dictionaryRep, forKey: kSettings)
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadFromPersistStore()
-        setupTextField()
     }
 }

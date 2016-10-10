@@ -10,19 +10,40 @@ import UIKit
 
 class MainScreen: UIViewController, UITextFieldDelegate {
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var maxLabel: UILabel!
+    @IBOutlet weak var averageLabel: UILabel!
+    @IBOutlet weak var seperationLine: UILabel!
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var sizeLabel: UILabel!
+    
+    @IBOutlet weak var sizeOfFileTextField: UITextField!
+    
+    // MARK: - Accessable Fucntions
+    
     var file = File()
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        if string == "\n" || string == "\t" {
-            return false
-        }
-        
-        let nonValue = NSCharacterSet(charactersInString: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\"\"`~<>\\/?';:{}[]|=+-_()*&^%$#@!,")
-        
-        return (string.rangeOfCharacterFromSet(nonValue) == nil)
+    // MARK: - View
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        SpeedSettings.sharedContoller.loadFromPersistStore()
+        sizeOfTextFieldDidChange()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.definesPresentationContext = true
+        averageLabel.text = ""
+        maxLabel.text = ""
+        minLabel.text = ""
+        sizeOfFileTextField.delegate = self
+    }
+    
+    // MARK: - Actions
+  
     @IBAction func sizeOfTextFieldDidChange() {
         
         guard let text = sizeOfFileTextField.text where text != "" && text != " " else { return }
@@ -49,14 +70,7 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         updateTextFields()
     }
     
-    @IBOutlet weak var minLabel: UILabel!
-    @IBOutlet weak var maxLabel: UILabel!
-    @IBOutlet weak var averageLabel: UILabel!
-    @IBOutlet weak var seperationLine: UILabel!
-    @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var sizeLabel: UILabel!
-    
-    @IBOutlet weak var sizeOfFileTextField: UITextField!
+    // MARK: - Switch and Stepper functions
     
     @IBAction func wifiEthernetSwitch(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -91,19 +105,7 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        SpeedSettings.sharedContoller.loadFromPersistStore()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.definesPresentationContext = true
-        averageLabel.text = ""
-        maxLabel.text = ""
-        minLabel.text = ""
-        sizeOfFileTextField.delegate = self
-    }
+    // MARK: - Alert Controllers
     
     func displaySettingsAlert() {
         let alertController = UIAlertController(title: "Please setup your speed settings", message: nil, preferredStyle: .Alert)
@@ -117,6 +119,19 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
         
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Helper functions
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if string == "\n" || string == "\t" {
+            return false
+        }
+        
+        let nonValue = NSCharacterSet(charactersInString: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\"\"`~<>\\/?';:{}[]|=+-_()*&^%$#@!,")
+        
+        return (string.rangeOfCharacterFromSet(nonValue) == nil)
     }
     
     func updateTextFields() {
@@ -214,55 +229,6 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         }
     }
 }
-
-//var averageLabel = UILabel()
-//var maxLabel = UILabel()
-//var minLabel = UILabel()
-//
-//var stackView = UIStackView()
-//
-//var averageView = UIStackView()
-//var maxView = UIStackView()
-//var minView = UIStackView()
-//
-//func setupStackView() {
-//
-//    stackView = UIStackView(arrangedSubviews: [averageView, maxView, minView])
-//
-//    stackView.axis = .Vertical
-//    stackView.distribution = .FillEqually
-//    stackView.alignment = .Fill
-//    stackView.spacing = 0
-//    stackView.translatesAutoresizingMaskIntoConstraints = false
-//
-//    view.addSubview(stackView)
-//}
-//
-//func setupLabels() {
-//
-//    averageLabel.text = "Your average download time is..."
-//    averageLabel.font = UIFont(name: "Krungthep", size: 20.0)
-//
-//    maxLabel.text = "Your maximum download time is..."
-//    maxLabel.font = UIFont(name: "Krungthep", size: 20.0)
-//
-//    minLabel.text = "Your minimum download time is..."
-//    minLabel.font = UIFont(name: "Krungthep", size: 20.0)
-//
-//    averageView.addSubview(averageLabel)
-//    maxView.addSubview(maxLabel)
-//    minView.addSubview(minLabel)
-//}
-//
-//func setupConstraints() {
-//
-//    let verticalStackViewTop = NSLayoutConstraint(item: stackView, attribute: .Top, relatedBy: .Equal, toItem: self.seperationLine, attribute: .Bottom, multiplier: 1.0, constant: 0)
-//    let verticalStackViewTrailing = NSLayoutConstraint(item: stackView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0)
-//    let verticalStackViewLeading = NSLayoutConstraint(item: stackView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0)
-//    let verticalStackViewBottom = NSLayoutConstraint(item: stackView, attribute: .Bottom, relatedBy: .Equal, toItem: self.toolBar, attribute: .Top, multiplier: 1.0, constant: 0)
-//
-//    view.addConstraints([verticalStackViewTop, verticalStackViewBottom, verticalStackViewLeading, verticalStackViewTrailing])
-//}
 
 
 
