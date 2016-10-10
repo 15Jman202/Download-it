@@ -43,7 +43,7 @@ class CalculatorController {
         
         let seconds = (size / downloadSpeed)
         guard seconds >= 0.000000001 else { return (0, 0, 0) }
-        guard seconds <= 999999999999999999999999.9 else { return (99999999999999, 0, 0)}
+        guard seconds <= 999999999999999999999999.9 else { return (9999999, 0, 0)}
         return secondsToHoursMinutesSeconds(seconds)
     }
 }
