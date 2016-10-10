@@ -117,6 +117,10 @@ class SpeedSettings: UIViewController, UITextFieldDelegate {
             return false
         }
         
+        if string == "." {
+            return (!(textField.text?.characters.contains(".") ?? true))
+        }
+        
         let nonValue = NSCharacterSet(charactersInString: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\"\"`~<>\\/?';:{}[]|=+-_()*&^%$#@!,")
         
         return (string.rangeOfCharacterFromSet(nonValue) == nil)
