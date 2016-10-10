@@ -12,9 +12,20 @@ class MainScreen: UIViewController, UITextFieldDelegate {
     
     var file = File()
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if string == "\n" || string == "\t" {
+            return false
+        }
+        
+        let nonValue = NSCharacterSet(charactersInString: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\"\"`~<>\\/?';:{}[]|=+-_()*&^%$#@!,")
+        
+        return (string.rangeOfCharacterFromSet(nonValue) == nil)
+    }
+    
     @IBAction func sizeOfTextFieldDidChange() {
         
-        guard let text = sizeOfFileTextField.text where text != "" else { return }
+        guard let text = sizeOfFileTextField.text where text != "" && text != " " else { return }
         
         guard text.characters.first != "." else { return }
         guard text.characters.count <= 15 else { sizeOfFileTextField.text = ""; file.size = 0.0; file.isPluggedIn = false; file.sizeType = Size.MB; displayToLargeOfFileAlert(); return }
@@ -29,6 +40,9 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         sizeOfFileTextField.resignFirstResponder()
         
         guard let text = sizeOfFileTextField.text where text != "" else { return }
+        
+        guard text.characters.first != "." else { return }
+        guard text.characters.count <= 15 else { sizeOfFileTextField.text = ""; file.size = 0.0; file.isPluggedIn = false; file.sizeType = Size.MB; displayToLargeOfFileAlert(); return }
         
         file.size = Double(text)!
         
