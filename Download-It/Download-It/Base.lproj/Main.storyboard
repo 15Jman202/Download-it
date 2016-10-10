@@ -50,7 +50,7 @@
                                     <action selector="sizeOfTextFieldDidChange" destination="6a0-qB-puL" eventType="editingChanged" id="32W-QS-uye"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-hc-NvJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of File" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-hc-NvJ">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                     <action selector="valueChanged:" destination="6a0-qB-puL" eventType="valueChanged" id="6ki-Qd-V0i"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqE-Yt-XLX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MB" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqE-Yt-XLX">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25.5" id="kDi-fO-lbG"/>
                                 </constraints>
@@ -127,7 +127,7 @@
                             <constraint firstItem="gHR-hc-NvJ" firstAttribute="leading" secondItem="zYW-gb-kGx" secondAttribute="leadingMargin" constant="8" id="S7c-Vq-Wms"/>
                             <constraint firstItem="XYe-B1-PGb" firstAttribute="centerY" secondItem="iqE-Yt-XLX" secondAttribute="centerY" id="SYT-Vo-McC"/>
                             <constraint firstItem="XYe-B1-PGb" firstAttribute="leading" secondItem="Y9a-ZF-wCe" secondAttribute="leading" id="Syg-ai-hpg"/>
-                            <constraint firstItem="Y9a-ZF-wCe" firstAttribute="top" secondItem="gHR-hc-NvJ" secondAttribute="bottom" constant="11" id="Wkm-Ua-3Ae"/>
+                            <constraint firstItem="Y9a-ZF-wCe" firstAttribute="top" secondItem="gHR-hc-NvJ" secondAttribute="bottom" constant="12" id="Wkm-Ua-3Ae"/>
                             <constraint firstItem="PjC-2i-cx3" firstAttribute="leading" secondItem="nYB-AZ-e4z" secondAttribute="leading" id="XrB-cY-mpr"/>
                             <constraint firstItem="XYe-B1-PGb" firstAttribute="top" secondItem="PjC-2i-cx3" secondAttribute="bottom" constant="34" id="bAb-Fj-jXe"/>
                             <constraint firstItem="Roh-gJ-ByZ" firstAttribute="top" secondItem="Y9a-ZF-wCe" secondAttribute="bottom" constant="18" id="cT5-kt-3Tj"/>

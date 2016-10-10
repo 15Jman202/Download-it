@@ -17,6 +17,7 @@ class MainScreen: UIViewController, UITextFieldDelegate {
         guard let text = sizeOfFileTextField.text where text != "" else { return }
         
         guard text.characters.first != "." else { return }
+        guard text.characters.count <= 15 else { sizeOfFileTextField.text = ""; file.size = 0.0; file.isPluggedIn = false; file.sizeType = Size.MB; displayToLargeOfFileAlert(); return }
         
         file.size = Double(text)!
         
@@ -92,6 +93,13 @@ class MainScreen: UIViewController, UITextFieldDelegate {
     
     func displaySettingsAlert() {
         let alertController = UIAlertController(title: "Please setup your speed settings", message: nil, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func displayToLargeOfFileAlert() {
+        let alertController = UIAlertController(title: "Size of file is to large to calculate", message: nil, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
         
         presentViewController(alertController, animated: true, completion: nil)
